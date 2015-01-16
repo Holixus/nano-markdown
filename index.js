@@ -1,4 +1,8 @@
-"use strict";
+/**
+ * nanomarkdown - a minimal markdown to html converter
+ * Copyright (c) 2015, Vladimir Antonov. (MIT Licensed)
+ * https://github.com/Holixus/nanomarkdown
+ */
 
 (function (root, factory) {
 	if (typeof define === 'function' && define.amd) {
@@ -12,6 +16,7 @@
 		root.returnExports = factory();
 	}
 }(this, function () {
+"use strict";
 
 function bi(a) {
 	return a.replace(/(\*\*|__|~~)(\S(?:[\s\S]*?\S)?)\1/g, function (m, delim, text) {
