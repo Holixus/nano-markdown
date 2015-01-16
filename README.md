@@ -42,10 +42,10 @@ console.log(ndm('test\n* [case #44](#44)\n* [commit 750945c](@750945c)'));
 ## Lists
 
 ```
- \* unordered list
-  \1\. ordered list
-  \1\. ordered list
-  \1\. ordered list
-  \1\. ordered list
- \* unordered list
+ * unordered list
+  1. ordered list
+  1. ordered list
+  1. ordered list
+  1. ordered list
+ * unordered list
 ```
