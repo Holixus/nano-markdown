@@ -73,38 +73,28 @@ var nmd = function (md) {
 			if (cur && cur[1] !== 'hr')
 				cur[0] += '\n' + row;
 			else
-				ps.push(cur = [ row, 'p' ]);
+				ps.push(cur = [ row, 'p', '' ]);
 		}
 		var out = '', lists = [];
 		for (var i = 0, l = ps.length; i < l; ++i) {
-			var cur = ps[i], text = cur[0];
-			switch (cur[1]) {
+			var cur = ps[i], text = cur[0], tag = cur[1];
+			switch (tag) {
 			case 'ul':
 			case 'ol':
 				if (!lists.length || cur[2] > lists[0][1]) {
-					lists.unshift([ cur[1], cur[2] ]);
+					lists.unshift([ tag, cur[2] ]);
 					out += '<'+lists[0][0]+'><li>'+text;
 				} else
 					if (lists.length > 1 && cur[2] <= lists[1][1]) {
 						out += '</li></'+lists.shift()[0]+'>';
-						--i
+						--i;
 					} else
 						out += '</li><li>'+text;
 				continue;
 			}
 			while (lists.length)
 				out += '</li></'+lists.shift()[0]+'>';
-			switch (cur[1]) {
-			case 'p':
-				out += '<p>'+text+'</p>';
-				break;
-			case 'hr':
-				out += '<hr/>';
-				break;
-			case 'h':
-				out += '<h'+cur[2]+'>'+text+'</h'+cur[2]+'>';
-				break;
-			}
+			out += (tag === 'hr') ? '<hr/>' : '<'+tag+cur[2]+'>'+text+'</'+tag+cur[2]+'>';
 		}
 		while (lists.length)
 			out += '</li></'+lists.shift()[0]+'>';
