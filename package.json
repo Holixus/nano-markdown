@@ -19,5 +19,12 @@
   "bugs": {
     "url": "https://github.com/Holixus/nanomarkdown/issues"
   },
-  "homepage": "https://github.com/Holixus/nanomarkdown"
+  "homepage": "https://github.com/Holixus/nanomarkdown",
+  "devDependencies": {
+    "grunt": ">= 0.4.5",
+    "gzip-js": ">= 0.3.1",
+    "grunt-contrib-uglify": ">= 0.2.2",
+    "grunt-compare-size": ">= 0.0.0",
+    "colors": ">= 0.6.1"
+  }
 }
