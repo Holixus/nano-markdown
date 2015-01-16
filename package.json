@@ -1,0 +1,23 @@
+{
+  "name": "nanomarkdown",
+  "version": "0.1.0",
+  "description": "minimal markdown to html converter",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Holixus/nanomarkdown.git"
+  },
+  "keywords": [
+    "markdown",
+    "html"
+  ],
+  "author": "Vladimir Antonov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Holixus/nanomarkdown/issues"
+  },
+  "homepage": "https://github.com/Holixus/nanomarkdown"
+}
