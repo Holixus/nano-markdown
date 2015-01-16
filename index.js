@@ -1,5 +1,18 @@
 "use strict";
 
+(function (root, factory) {
+	if (typeof define === 'function' && define.amd) {
+		// AMD
+		define([ ], factory);
+	} else if (typeof exports === 'object') {
+		// Node, CommonJS-like
+		module.exports = factory();
+	} else {
+		// Browser globals (root is window)
+		root.returnExports = factory();
+	}
+}(this, function () {
+
 function bi(a) {
 	return a.replace(/(\*\*|__|~~)(\S(?:[\s\S]*?\S)?)\1/g, function (m, delim, text) {
 		if (delim === '~~')
@@ -98,4 +111,5 @@ nmd.href = function (ref) {
 	return ref;
 };
 
-module.exports = nmd;
+return nmd;
+}));
