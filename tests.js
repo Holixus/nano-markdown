@@ -42,6 +42,15 @@ var assert = require('assert'),
 * 1st level',
 			'<ul><li>1st level<ul><li>2nd level</li><li>2nd</li><li>2nd level</li></ul></li><li>1st level</li></ul>'
 		],
+		lists_o: [
+			'\
+* 1st level\n\
+   1. 2nd level\n\
+   2. 2nd\n\
+   3. 2nd level\n\
+* 1st level',
+			'<ul><li>1st level<ol><li>2nd level</li><li>2nd</li><li>2nd level</li></ol></li><li>1st level</li></ul>'
+		],
 		links: [
 			'tertet [comment](http://comment.com) ![image](/i/icon.jpg) [link with title](/links.html "title of link") [link for new window](+/new_window.html) wrwerwe;wer',
 			'<p>tertet <a href="http://comment.com">comment</a> <img src="/i/icon.jpg" alt="image"/> <a href="/links.html" title="title of link">link with title</a> <a href="/new_window.html" target="_blank">link for new window</a> wrwerwe;wer</p>'
