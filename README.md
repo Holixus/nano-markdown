@@ -7,11 +7,11 @@ Supports only paragraphs, lists, bold/italic, links, images.
 ```js
 var nmd = require('nanomarkdown');
 
-console.log(ndm('test'));
+console.log(nmd('test'));
 // <p>test</p>
 
 // customizable links
-ndm.href = function (ref) {
+nmd.href = function (ref) {
 	switch (ref.charAt(0)) {
 	case '#':
 		return '/case/'+ref.substr(1);
@@ -21,7 +21,7 @@ ndm.href = function (ref) {
 	return ref;
 };
 
-console.log(ndm('test\n* [case #44](#44)\n* [commit 750945c](@750945c)'));
+console.log(nmd('test\n* [case #44](#44)\n* [commit 750945c](@750945c)'));
 // <p>test</p>\n<ul><li><a href='/case/44'>case #44</a></li><li><a href='/commit/750945c'>commit 750945c</a></li></ul>
 ```
 
