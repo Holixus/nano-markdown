@@ -54,6 +54,10 @@ var assert = require('assert'),
 		links: [
 			'tertet [comment](http://comment.com) ![image](/i/icon.jpg) [link with title](/links.html "title of link") [link for new window](+/new_window.html) wrwerwe;wer',
 			'<p>tertet <a href="http://comment.com">comment</a> <img src="/i/icon.jpg" alt="image"/> <a href="/links.html" title="title of link">link with title</a> <a href="/new_window.html" target="_blank">link for new window</a> wrwerwe;wer</p>'
+		],
+		hr: [
+			'---\n-- - - - - -\n------------------------------------',
+			'<hr/><hr/><hr/>'
 		]
 };
 
