@@ -39,6 +39,15 @@ console.log(nmd('test\n* [case #44](#44)\n* [commit 750945c](@750945c)'));
  * `_italic_, *italic*`
  * `~~deleted text~~`
 
+## Horizontal Rules
+
+```
+---
+ - - - -
+   -- -- -- -- --
+------------------------
+```
+
 ## Lists
 
 ```
