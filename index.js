@@ -29,16 +29,12 @@ function bi(a) {
 }
 
 function links(a) {
-	return a.replace(/!?\[([^\]<>]+)\]\(([^ \)<>]+)(?: "([^\(\)\"]+)")?\)/g, function (match, text, ref, title) {
-		var attrs = '';
-		if (title)
-			attrs += ' title="' + title + '"';
-		if (match.charAt(0) === '!')
+	return a.replace(/(!?)\[([^\]<>]+)\]\((\+?)([^ \)<>]+)(?: "([^\(\)\"]+)")?\)/g, function (match, is_img, text, new_tab, ref, title) {
+		var attrs = title ? ' title="' + title + '"' : '';
+		if (is_img)
 			return '<img src="' + nmd.href(ref) + '" alt="' + text + '"' + attrs + '/>';
-		if (ref.charAt(0) === '+') {
+		if (new_tab)
 			attrs += ' target="_blank"';
-			ref = ref.substr(1);
-		}
 		return '<a href="' + nmd.href(ref) + '"' + attrs + '>' + text + '</a>';
 	});
 }
@@ -58,29 +54,24 @@ var nmd = function (md) {
 				ps.push(cur = [ head[2], 'h', head[1].length ]); // cur = [ text, type, level ]
 				continue;
 			}
-			var list = /^(\s*)(?:(\*|\-)|\d(\.|\))) (.+)$/.exec(row);
+			var list = /^(\s*)(?:[-*]|(\d[.)])) (.+)$/.exec(row);
 			if (list) {
-				var type = list[2] ? 'ul' : 'ol',
-				    level = list[1].length;
-				ps.push(cur = [ list[4], type, level ]);
+				ps.push(cur = [ list[3], list[2] ? 'ol' : 'ul', list[1].length ]); // cur = [ text, type, level ]
 				continue;
 			}
-			var hr = /^(?:([\*\-_] ?)+)\1\1$/.exec(row);
-			if (hr) {
+			var hr = /^\s{0,3}([-])(\s*\1){2,}\s*$/.exec(row);
+			if (hr)
 				ps.push(cur = [ '', 'hr' ]);
-				continue;
-			}
-			if (cur && cur[1] !== 'hr')
-				cur[0] += '\n' + row;
 			else
-				ps.push(cur = [ row, 'p', '' ]);
+				if (cur && cur[1] !== 'hr')
+					cur[0] += '\n' + row;
+				else
+					ps.push(cur = [ row, 'p', '' ]);
 		}
 		var out = '', lists = [];
 		for (var i = 0, l = ps.length; i < l; ++i) {
 			var cur = ps[i], text = cur[0], tag = cur[1];
-			switch (tag) {
-			case 'ul':
-			case 'ol':
+			if (tag === 'ul' || tag === 'ol') {
 				if (!lists.length || cur[2] > lists[0][1]) {
 					lists.unshift([ tag, cur[2] ]);
 					out += '<'+lists[0][0]+'><li>'+text;
@@ -90,11 +81,11 @@ var nmd = function (md) {
 						--i;
 					} else
 						out += '</li><li>'+text;
-				continue;
+			} else {
+				while (lists.length)
+					out += '</li></'+lists.shift()[0]+'>';
+				out += (tag === 'hr') ? '<hr/>' : '<'+tag+cur[2]+'>'+text+'</'+tag+cur[2]+'>';
 			}
-			while (lists.length)
-				out += '</li></'+lists.shift()[0]+'>';
-			out += (tag === 'hr') ? '<hr/>' : '<'+tag+cur[2]+'>'+text+'</'+tag+cur[2]+'>';
 		}
 		while (lists.length)
 			out += '</li></'+lists.shift()[0]+'>';
