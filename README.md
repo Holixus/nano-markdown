@@ -25,6 +25,23 @@ console.log(nmd('test\n* [case #44](#44)\n* [commit 750945c](@750945c)'));
 // <p>test</p>\n<ul><li><a href='/case/44'>case #44</a></li><li><a href='/commit/750945c'>commit 750945c</a></li></ul>
 ```
 
+## Heading
+
+```
+# foo
+## foo
+### foo
+#### foo
+##### foo
+###### foo
+# foo ############################
+## foo ###########################
+### foo ##########################
+#### foo #########################
+##### foo ########################
+###### foo #######################
+```
+
 ## Images
  * `![image alt text](/images/picture.jpg)`
  * `![image alt text](/images/picture.jpg "image title text")`

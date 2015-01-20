@@ -21,8 +21,18 @@ var assert = require('assert'),
 			'<p>long\nparagraph</p>\n\n<p>second</p>'
 		],
 		heading: [
-			'# first level\n##second level',
-			'<h1> first level</h1><h2>second level</h2>'
+			'# foo\n\
+## foo\n\
+### foo\n\
+#### foo\n\
+##### foo\n\
+###### foo\n\
+####### foo\n\
+\n\
+#sdfsfs\n\n\
+# ooop! #######################\n\
+# \n',
+			'<h1>foo</h1><h2>foo</h2><h3>foo</h3><h4>foo</h4><h5>foo</h5><h6>foo</h6><p>####### foo</p>\n\n<p>#sdfsfs</p>\n\n<h1>ooop!</h1><h1></h1>\n'
 		],
 		lists_s: [
 			'\

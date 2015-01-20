@@ -49,7 +49,7 @@ var nmd = function (md) {
 		    rows = lex(m).split('\n');
 		for (var cur, i = 0, l = rows.length; i < l; ++i) {
 			var row = rows[i],
-			    head = /^\s*(\#{1,6})(.+)$/.exec(row);
+			    head = /^\s{0,3}(\#{1,6})\s+(.*?)\s*#*\s*$/.exec(row);
 			if (head) { // heading
 				ps.push(cur = [ head[2], 'h', head[1].length ]); // cur = [ text, type, level ]
 				continue;
@@ -63,7 +63,7 @@ var nmd = function (md) {
 			if (hr)
 				ps.push(cur = [ '', 'hr' ]);
 			else
-				if (cur && cur[1] !== 'hr')
+				if (cur && cur[1] !== 'hr' && cur[1] !== 'h')
 					cur[0] += '\n' + row;
 				else
 					ps.push(cur = [ row, 'p', '' ]);
