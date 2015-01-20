@@ -1,6 +1,6 @@
 # nanomarkdown
 
-Supports only paragraphs, lists, bold/italic, links, images.
+1600 bytes of minified code. Supports only heading, paragraphs, lists, bold/italic, links and images.
 
 ## Usage
 
