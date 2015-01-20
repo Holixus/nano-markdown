@@ -18,18 +18,12 @@
 }(this, function () {
 "use strict";
 
-function bi(a) {
+function lex(a) {
 	return a.replace(/(\*\*|__|~~)(\S(?:[\s\S]*?\S)?)\1/g, function (m, delim, text) {
-		if (delim === '~~')
-			return '<del>'+text+'</del>';
-		return '<b>'+text+'</b>';
+		return (delim === '~~') ? '<del>'+text+'</del>' : '<b>'+text+'</b>';
 	}).replace(/(\n|^|\W)([_\*])(\S(?:[\s\S]*?\S)?)\2(\W|$|\n)/g, function (m, l, di, ital, r) {
 		return l+'<i>'+ital+'</i>'+r;
-	});
-}
-
-function links(a) {
-	return a.replace(/(!?)\[([^\]<>]+)\]\((\+?)([^ \)<>]+)(?: "([^\(\)\"]+)")?\)/g, function (match, is_img, text, new_tab, ref, title) {
+	}).replace(/(!?)\[([^\]<>]+)\]\((\+?)([^ \)<>]+)(?: "([^\(\)\"]+)")?\)/g, function (match, is_img, text, new_tab, ref, title) {
 		var attrs = title ? ' title="' + title + '"' : '';
 		if (is_img)
 			return '<img src="' + nmd.href(ref) + '" alt="' + text + '"' + attrs + '/>';
@@ -37,10 +31,6 @@ function links(a) {
 			attrs += ' target="_blank"';
 		return '<a href="' + nmd.href(ref) + '"' + attrs + '>' + text + '</a>';
 	});
-}
-
-function lex(t) {
-	return links(bi(t));
 }
 
 var nmd = function (md) {
@@ -70,13 +60,13 @@ var nmd = function (md) {
 		}
 		var out = '', lists = [];
 		for (var i = 0, l = ps.length; i < l; ++i) {
-			var cur = ps[i], text = cur[0], tag = cur[1];
+			var cur = ps[i], text = cur[0], tag = cur[1], lvl = cur[2];
 			if (tag === 'ul' || tag === 'ol') {
-				if (!lists.length || cur[2] > lists[0][1]) {
-					lists.unshift([ tag, cur[2] ]);
+				if (!lists.length || lvl > lists[0][1]) {
+					lists.unshift([ tag, lvl ]);
 					out += '<'+lists[0][0]+'><li>'+text;
 				} else
-					if (lists.length > 1 && cur[2] <= lists[1][1]) {
+					if (lists.length > 1 && lvl <= lists[1][1]) {
 						out += '</li></'+lists.shift()[0]+'>';
 						--i;
 					} else
@@ -84,7 +74,7 @@ var nmd = function (md) {
 			} else {
 				while (lists.length)
 					out += '</li></'+lists.shift()[0]+'>';
-				out += (tag === 'hr') ? '<hr/>' : '<'+tag+cur[2]+'>'+text+'</'+tag+cur[2]+'>';
+				out += (tag === 'hr') ? '<hr/>' : '<'+tag+lvl+nmd.headAttrs(lvl, text)+'>'+text+'</'+tag+lvl+'>';
 			}
 		}
 		while (lists.length)
@@ -95,6 +85,10 @@ var nmd = function (md) {
 
 nmd.href = function (ref) {
 	return ref;
+};
+
+nmd.headAttrs = function (level, text) {
+	return ''; // return ' id=\''+text.replace(/[^a-z0-9]/g, '_').replace(/_{2,}/g, '_').replace(/^_*(.*?)_*$/, '$1').toLowerCase()+'\'';
 };
 
 return nmd;
