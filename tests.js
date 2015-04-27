@@ -20,6 +20,10 @@ var assert = require('assert'),
 			'long\nparagraph\n\nsecond',
 			'<p>long\nparagraph</p>\n\n<p>second</p>'
 		],
+		codes: [
+			"dfgdgd\ndfgdfgd\n\n    var q = 'a';\n    q += 'z';\n\nooooooo\n",
+			"<p>dfgdgd\ndfgdfgd</p>\n\n<pre><code>var q = 'a';\nq += 'z';</code></pre>\n\n<p>ooooooo</p>\n"
+		],
 		heading: [
 			'# foo\n\
 ## foo\n\

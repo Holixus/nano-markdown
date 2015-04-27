@@ -1,6 +1,6 @@
 # nanomarkdown
 
-1581 bytes of minified code. Supports heading, paragraphs, lists, horizontal rules, bold/italic/del, links and images.
+1681 bytes of minified code. Supports heading, paragraphs, code, lists, horizontal rules, bold/italic/del, links and images.
 
 ## Usage
 
@@ -82,4 +82,14 @@ console.log(nmd('# Header text'));
   1. ordered list
   1. ordered list
  * unordered list
+```
+
+## Code
+
+```
+    // Four spaces indented text
+    var count = 1000;
+    while (--count) {
+        console.log('Wow %d!', count);
+    }
 ```

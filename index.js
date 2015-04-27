@@ -35,6 +35,9 @@ function lex(a) {
 
 var nmd = function (md) {
 	return md.replace(/.+(?:\n.+)*/g, function (m) {
+		var code = /^\s{4}([^]*)$/.exec(m);
+		if (code)
+			return '<pre><code>' + code[1].replace(/\n    /g, '\n') + '</code></pre>';
 		var ps = [],
 		    rows = lex(m).split('\n');
 		for (var cur, i = 0, l = rows.length; i < l; ++i) {
