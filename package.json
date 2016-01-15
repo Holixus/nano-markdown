@@ -1,10 +1,23 @@
 {
   "name": "nanomarkdown",
-  "version": "1.1.0",
-  "description": "minimal markdown to html converter",
+  "version": "1.1.1",
+  "description": "A minimal markdown to html converter",
   "main": "index.js",
   "scripts": {
-    "test": "node tests.js"
+    "test": "mocha --reporter spec -u tdd",
+    "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- --reporter dot -u tdd",
+    "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter dot -u tdd"
+  },
+  "devDependencies": {
+    "colors": "0",
+    "core-assert": "0",
+    "istanbul": "0",
+    "mocha": "2",
+    "grunt": ">= 0.4.5",
+    "gzip-js": ">= 0.3.1",
+    "grunt-contrib-uglify": ">= 0.2.2",
+    "grunt-compare-size": ">= 0.0.0",
+    "colors": ">= 0.6.1"
   },
   "repository": {
     "type": "git",
@@ -19,12 +32,5 @@
   "bugs": {
     "url": "https://github.com/Holixus/nanomarkdown/issues"
   },
-  "homepage": "https://github.com/Holixus/nanomarkdown",
-  "devDependencies": {
-    "grunt": ">= 0.4.5",
-    "gzip-js": ">= 0.3.1",
-    "grunt-contrib-uglify": ">= 0.2.2",
-    "grunt-compare-size": ">= 0.0.0",
-    "colors": ">= 0.6.1"
-  }
+  "homepage": "https://github.com/Holixus/nanomarkdown"
 }

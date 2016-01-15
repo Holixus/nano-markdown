@@ -5,16 +5,19 @@
  */
 
 (function (root, factory) {
-	if (typeof define === 'function' && define.amd) {
+	/* istanbul ignore if */
+	if (typeof define === 'function' && /* istanbul ignore next */ define.amd) {
 		// AMD
 		define([ ], factory);
-	} else if (typeof exports === 'object') {
-		// Node, CommonJS-like
-		module.exports = factory();
-	} else {
-		// Browser globals (root is window)
-		root.returnExports = factory();
-	}
+	} else 
+		/* istanbul ignore else */
+		if (typeof exports === 'object') {
+			// Node, CommonJS-like
+			module.exports = factory();
+		} else {
+			// Browser globals (root is window)
+			root.returnExports = factory();
+		}
 }(this, function () {
 "use strict";
 
