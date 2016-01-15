@@ -103,17 +103,17 @@ console.log(nmd('# Header text'));
 
 [gitter-image]: https://badges.gitter.im/Holixus/nanomarkdown.png
 [gitter-url]: https://gitter.im/Holixus/nanomarkdown
-[npm-image]: https://img.shields.io/npm/v/nanomarkdown.svg?style=flat-square
+[npm-image]: https://img.shields.io/npm/v/nanomarkdown.svg
 [npm-url]: https://npmjs.org/package/nanomarkdown
-[github-tag]: http://img.shields.io/github/tag/Holixus/nanomarkdown.svg?style=flat-square
+[github-tag]: http://img.shields.io/github/tag/Holixus/nanomarkdown.svg
 [github-url]: https://github.com/Holixus/nanomarkdown/tags
 [travis-image]: https://travis-ci.org/Holixus/nanomarkdown.svg?branch=master
 [travis-url]: https://travis-ci.org/Holixus/nanomarkdown
-[coveralls-image]: https://img.shields.io/coveralls/Holixus/nanomarkdown.svg?style=flat-square
+[coveralls-image]: https://img.shields.io/coveralls/Holixus/nanomarkdown.svg
 [coveralls-url]: https://coveralls.io/r/Holixus/nanomarkdown
-[david-image]: http://img.shields.io/david/Holixus/nanomarkdown.svg?style=flat-square
+[david-image]: http://img.shields.io/david/Holixus/nanomarkdown.svg
 [david-url]: https://david-dm.org/Holixus/nanomarkdown
-[license-image]: http://img.shields.io/npm/l/nanomarkdown.svg?style=flat-square
+[license-image]: http://img.shields.io/npm/l/nanomarkdown.svg
 [license-url]: LICENSE
-[downloads-image]: http://img.shields.io/npm/dm/nanomarkdown.svg?style=flat-square
+[downloads-image]: http://img.shields.io/npm/dm/nanomarkdown.svg
 [downloads-url]: https://npmjs.org/package/nanomarkdown
