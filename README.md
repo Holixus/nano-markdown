@@ -102,7 +102,7 @@ console.log(nmd('# Header text'));
     }
 ```
 
-[gitter-image]: https://badges.gitter.im/Holixus/nanomarkdown.png
+[gitter-image]: https://badges.gitter.im/Holixus/nanomarkdown.svg
 [gitter-url]: https://gitter.im/Holixus/nanomarkdown
 [npm-image]: https://img.shields.io/npm/v/nanomarkdown.svg
 [npm-url]: https://npmjs.org/package/nanomarkdown
