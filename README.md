@@ -103,21 +103,21 @@ console.log(nmd('# Header text'));
     }
 ```
 
-[gitter-image]: https://badges.gitter.im/Holixus/nanomarkdown.svg
-[gitter-url]: https://gitter.im/Holixus/nanomarkdown
-[npm-image]: https://img.shields.io/npm/v/nanomarkdown.svg
-[npm-url]: https://npmjs.org/package/nanomarkdown
-[github-tag]: http://img.shields.io/github/tag/Holixus/nanomarkdown.svg
-[github-url]: https://github.com/Holixus/nanomarkdown/tags
-[travis-image]: https://travis-ci.org/Holixus/nanomarkdown.svg?branch=master
-[travis-url]: https://travis-ci.org/Holixus/nanomarkdown
-[coveralls-image]: https://img.shields.io/coveralls/Holixus/nanomarkdown.svg
-[coveralls-url]: https://coveralls.io/r/Holixus/nanomarkdown
-[bithound-image]: https://www.bithound.io/github/Holixus/nanomarkdown/badges/score.svg
-[bithound-url]: https://www.bithound.io/github/Holixus/nanomarkdown
-[david-image]: http://img.shields.io/david/Holixus/nanomarkdown.svg
-[david-url]: https://david-dm.org/Holixus/nanomarkdown
-[license-image]: http://img.shields.io/npm/l/nanomarkdown.svg
+[gitter-image]: https://badges.gitter.im/Holixus/nano-markdown.svg
+[gitter-url]: https://gitter.im/Holixus/nano-markdown
+[npm-image]: https://img.shields.io/npm/v/nano-markdown.svg
+[npm-url]: https://npmjs.org/package/nano-markdown
+[github-tag]: http://img.shields.io/github/tag/Holixus/nano-markdown.svg
+[github-url]: https://github.com/Holixus/nano-markdown/tags
+[travis-image]: https://travis-ci.org/Holixus/nano-markdown.svg?branch=master
+[travis-url]: https://travis-ci.org/Holixus/nano-markdown
+[coveralls-image]: https://img.shields.io/coveralls/Holixus/nano-markdown.svg
+[coveralls-url]: https://coveralls.io/r/Holixus/nano-markdown
+[bithound-image]: https://www.bithound.io/github/Holixus/nano-markdown/badges/score.svg
+[bithound-url]: https://www.bithound.io/github/Holixus/nano-markdown
+[david-image]: http://img.shields.io/david/Holixus/nano-markdown.svg
+[david-url]: https://david-dm.org/Holixus/nano-markdown
+[license-image]: http://img.shields.io/npm/l/nano-markdown.svg
 [license-url]: LICENSE
-[downloads-image]: http://img.shields.io/npm/dm/nanomarkdown.svg
-[downloads-url]: https://npmjs.org/package/nanomarkdown
+[downloads-image]: http://img.shields.io/npm/dm/nano-markdown.svg
+[downloads-url]: https://npmjs.org/package/nano-markdown

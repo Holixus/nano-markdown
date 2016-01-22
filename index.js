@@ -1,7 +1,7 @@
 /**
- * nanomarkdown - a minimal markdown to html converter
+ * nano-markdown - a minimal markdown to html converter
  * Copyright (c) 2015, Vladimir Antonov. (MIT Licensed)
- * https://github.com/Holixus/nanomarkdown
+ * https://github.com/Holixus/nano-markdown
  */
 
 (function (root, factory) {
