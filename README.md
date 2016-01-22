@@ -1,7 +1,8 @@
 [![Gitter][gitter-image]][gitter-url]
-[![NPM version][npm-image]][npm-url]
 [![Build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
+[![bitHound Overall Score][bithound-image]][bithound-url]
+[![NPM version][npm-image]][npm-url]
 [![Dependency Status][david-image]][david-url]
 [![License][license-image]][license-url]
 [![Downloads][downloads-image]][downloads-url]
@@ -112,6 +113,8 @@ console.log(nmd('# Header text'));
 [travis-url]: https://travis-ci.org/Holixus/nanomarkdown
 [coveralls-image]: https://img.shields.io/coveralls/Holixus/nanomarkdown.svg
 [coveralls-url]: https://coveralls.io/r/Holixus/nanomarkdown
+[bithound-image]: https://www.bithound.io/github/Holixus/nanomarkdown/badges/score.svg
+[bithound-url]: https://www.bithound.io/github/Holixus/nanomarkdown
 [david-image]: http://img.shields.io/david/Holixus/nanomarkdown.svg
 [david-url]: https://david-dm.org/Holixus/nanomarkdown
 [license-image]: http://img.shields.io/npm/l/nanomarkdown.svg
