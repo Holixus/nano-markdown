@@ -13,27 +13,24 @@ var timer = function (ms, v) {
 	});
 };
 
+function uni_test(args, ret) {
+	test(fn.name+'('+json.js2str(args, sradix)+') -> '+json.js2str(ret, dradix)+'', function (done) {
+		assert.strictEqual(args instanceof Array ? fn.apply(null, args) : fn.call(null, args), ret);
+		done();
+	});
+}
+
 function massive(name, fn, pairs, sradix, dradix) {
 	suite(name, function () {
 		for (var i = 0, n = pairs.length; i < n; i += 2)
-			(function (args, ret) {
-				test(fn.name+'('+json.js2str(args, sradix)+') -> '+json.js2str(ret, dradix)+'', function (done) {
-					assert.strictEqual(args instanceof Array ? fn.apply(null, args) : fn.call(null, args), ret);
-					done();
-				});
-			})(pairs[i], pairs[i+1]);
+			uni_test(pairs[i], pairs[i+1]);
 	});
 }
 
 function massive_reversed(name, fn, pairs, sradix, dradix) {
 	suite(name, function () {
 		for (var i = 0, n = pairs.length; i < n; i += 2)
-			(function (args, ret) {
-				test(fn.name+'('+json.js2str(args, sradix)+') -> '+json.js2str(ret, dradix)+'', function (done) {
-					assert.strictEqual(args instanceof Array ? fn.apply(null, args) : fn.call(null, args), ret);
-					done();
-				});
-			})(pairs[i+1], pairs[i]);
+			uni_test(pairs[i+1], pairs[i]);
 	});
 }
 
