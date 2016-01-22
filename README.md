@@ -7,14 +7,14 @@
 [![License][license-image]][license-url]
 [![Downloads][downloads-image]][downloads-url]
 
-# nanomarkdown
+# nano-markdown
 
 1664 bytes of minified code. Supports heading, paragraphs, code, lists, horizontal rules, bold/italic/del, links and images.
 
 ## Usage
 
 ```js
-var nmd = require('nanomarkdown');
+var nmd = require('nano-markdown');
 
 console.log(nmd('test'));
 // <p>test</p>
