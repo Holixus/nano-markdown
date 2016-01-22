@@ -1,5 +1,6 @@
 var nmd = require('../index.js'),
-    assert = require('core-assert');
+    assert = require('core-assert'),
+    json = require('nano-json');
 
 var timer = function (ms, v) {
 	return new Promise(function (resolve, reject) {
@@ -12,77 +13,11 @@ var timer = function (ms, v) {
 	});
 };
 
-function ts(a, radix, deep) {
-	switch (typeof a) {
-	case 'object':
-		if (a instanceof Array) {
-			var o = [];
-			for (var i = 0, n = a.length; i < n; ++i)
-				o[i] = ts(a[i], radix, 1);
-			return deep ? '['+o.join(',')+']' : o.join(',');
-		} else {
-			if (a === null)
-				return 'null';
-			var o = [];
-			for (var id in a)
-				o.push(id+':'+ts(a[id], radix, 1));
-			return '{' + o.join(',') + '}';
-		}
-		break;
-	case 'string':
-		var qc = 0, dqc = 0;
-		for (var i = 0, n = a.length; i < n; ++i)
-			switch (a.charAt(i)) {
-			case "'": ++qc; break;
-			case '"': ++dqc; break;
-			}
-		if (qc <= dqc) {
-			return '"' + a.replace(/["\t\n\r]/g, function (m) { //"
-				switch (m) {
-				case '"':	return '\\"';
-				case '\t':  return '\\t';
-				case '\n':  return '\\n';
-				case '\r':  return '\\r';
-				default:    return m;
-				}
-			}) + '"';
-		} else {
-			return "'" + a.replace(/['\t\n\r]/g, function (m) { //'
-				switch (m) {
-				case "'":	return "\\'";
-				case '\t':  return '\\t';
-				case '\n':  return '\\n';
-				case '\r':  return '\\r';
-				default:    return m;
-				}
-			}) + "'";
-		}
-	case 'number':
-		switch (radix) {
-		case 2:
-		case undefined:
-		default:
-			return '0b'+a.toString(2);
-		case 10:
-			return a.toString(10);
-		case 16:
-			return '0x'+a.toString(16);
-		case 8:
-			return '0o'+a.toString(8);
-		}
-	case 'undefined':
-		return 'undefined';
-	case 'function':
-	case 'boolean':
-		return a.toString();
-	}
-}
-
 function massive(name, fn, pairs, sradix, dradix) {
 	suite(name, function () {
 		for (var i = 0, n = pairs.length; i < n; i += 2)
 			(function (args, ret) {
-				test(fn.name+'('+ts(args, sradix)+') -> '+ts(ret, dradix)+'', function (done) {
+				test(fn.name+'('+json.js2str(args, sradix)+') -> '+json.js2str(ret, dradix)+'', function (done) {
 					assert.strictEqual(args instanceof Array ? fn.apply(null, args) : fn.call(null, args), ret);
 					done();
 				});
@@ -94,7 +29,7 @@ function massive_reversed(name, fn, pairs, sradix, dradix) {
 	suite(name, function () {
 		for (var i = 0, n = pairs.length; i < n; i += 2)
 			(function (args, ret) {
-				test(fn.name+'('+ts(args, sradix)+') -> '+ts(ret, dradix)+'', function (done) {
+				test(fn.name+'('+json.js2str(args, sradix)+') -> '+json.js2str(ret, dradix)+'', function (done) {
 					assert.strictEqual(args instanceof Array ? fn.apply(null, args) : fn.call(null, args), ret);
 					done();
 				});
