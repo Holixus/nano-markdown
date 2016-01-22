@@ -1,9 +1,10 @@
 {
   "name": "nanomarkdown",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "A minimal markdown to html converter",
   "main": "index.js",
   "scripts": {
+    "prepublish": "grunt",
     "test": "mocha --reporter spec -u tdd",
     "test-cov": "istanbul cover node_modules/mocha/bin/_mocha -- --reporter dot -u tdd",
     "test-travis": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --reporter dot -u tdd"

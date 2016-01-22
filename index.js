@@ -41,9 +41,9 @@ var nmd = function (md) {
 		var code = /^\s{4}([^]*)$/.exec(m);
 		if (code)
 			return '<pre><code>' + code[1].replace(/\n    /g, '\n') + '</code></pre>';
-		var ps = [],
+		var ps = [], cur,
 		    rows = lex(m).split('\n');
-		for (var cur, i = 0, l = rows.length; i < l; ++i) {
+		for (var i = 0, l = rows.length; i < l; ++i) {
 			var row = rows[i],
 			    head = /^\s{0,3}(\#{1,6})\s+(.*?)\s*#*\s*$/.exec(row);
 			if (head) { // heading
@@ -51,22 +51,21 @@ var nmd = function (md) {
 				continue;
 			}
 			var list = /^(\s*)(?:[-*]|(\d[.)])) (.+)$/.exec(row);
-			if (list) {
+			if (list)
 				ps.push(cur = [ list[3], list[2] ? 'ol' : 'ul', list[1].length ]); // cur = [ text, type, level ]
-				continue;
-			}
-			var hr = /^\s{0,3}([-])(\s*\1){2,}\s*$/.exec(row);
-			if (hr)
-				ps.push(cur = [ '', 'hr' ]);
 			else
-				if (cur && cur[1] !== 'hr' && cur[1] !== 'h')
-					cur[0] += '\n' + row;
+				if (/^\s{0,3}([-])(\s*\1){2,}\s*$/.test(row))
+					ps.push(cur = [ '', 'hr' ]);
 				else
-					ps.push(cur = [ row, 'p', '' ]);
+					if (cur && cur[1] !== 'hr' && cur[1] !== 'h')
+						cur[0] += '\n' + row;
+					else
+						ps.push(cur = [ row, 'p', '' ]);
 		}
 		var out = '', lists = [];
-		for (var i = 0, l = ps.length; i < l; ++i) {
-			var cur = ps[i], text = cur[0], tag = cur[1], lvl = cur[2];
+		for (i = 0, l = ps.length; i < l; ++i) {
+			cur = ps[i];
+			var text = cur[0], tag = cur[1], lvl = cur[2];
 			if (tag === 'ul' || tag === 'ol') {
 				if (!lists.length || lvl > lists[0][1]) {
 					lists.unshift([ tag, lvl ]);
