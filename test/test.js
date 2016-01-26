@@ -1,17 +1,7 @@
 var nmd = require('../index.js'),
     assert = require('core-assert'),
-    json = require('nano-json');
-
-var timer = function (ms, v) {
-	return new Promise(function (resolve, reject) {
-		var to = setTimeout(function () {
-				resolve(v);
-			}, ms);
-		return { cancel: function () {
-			clearTimeout(to);
-		}};
-	});
-};
+    json = require('nano-json'),
+    timer = require('nano-timer');
 
 function uni_test(fn, sradix, dradix, args, ret) {
 	test(fn.name+'('+json.js2str(args, sradix)+') -> '+json.js2str(ret, dradix)+'', function (done) {
