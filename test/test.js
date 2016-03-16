@@ -105,4 +105,16 @@ suite('compiling', function () {
 		'<hr/><hr/><hr/>'
 	]);
 
+	massive('backslash escapes', nmd, [
+		'sdfkmsdf \\*fsdfsdf\\* esererwe* \\\\werwer',
+		'<p>sdfkmsdf *fsdfsdf* esererwe* \\werwer</p>',
+		'sdfkmsdf \\#fsdfsdf\\+ esererwe\\- werwer',
+		'<p>sdfkmsdf #fsdfsdf+ esererwe- werwer</p>',
+		'sdfkmsdf \\.fsdfsdf\\! esererwe- werwer',
+		'<p>sdfkmsdf .fsdfsdf! esererwe- werwer</p>',
+		'sdfkmsdf \\[erer\\]\\(http://github.com\\) esererwe werwer',
+		'<p>sdfkmsdf [erer](http://github.com) esererwe werwer</p>',
+		'sdfkmsdf \\{fsdfsdf\\} esererwe werwer',
+		'<p>sdfkmsdf {fsdfsdf} esererwe werwer</p>'
+	]);
 });

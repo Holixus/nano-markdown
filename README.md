@@ -9,7 +9,7 @@
 
 # nano-markdown
 
-1664 bytes of minified code. Supports heading, paragraphs, code, lists, horizontal rules, bold/italic/del, links and images.
+1894 bytes of minified code. Supports heading, paragraphs, code, lists, horizontal rules, bold/italic/del, links and images.
 
 ## Usage
 

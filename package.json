@@ -1,6 +1,6 @@
 {
   "name": "nano-markdown",
-  "version": "1.1.4",
+  "version": "1.2.0",
   "description": "A minimal markdown to html converter",
   "main": "index.js",
   "scripts": {

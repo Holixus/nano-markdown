@@ -20,8 +20,13 @@
 }(this, function () {
 "use strict";
 
+var escapes = '\\[!]#{()}*+-._',
+    esc_ofs = 16;
+
 function lex(a) {
-	return a.replace(/(\*\*|__|~~)(\S(?:[\s\S]*?\S)?)\1/g, function (m, delim, text) {
+	return a.replace(/\\([(){}[\]#*+\-.!_\\])/g, function (m, ch) {
+		return String.fromCharCode(1, escapes.indexOf(ch)+esc_ofs);
+	}).replace(/(\*\*|__|~~)(\S(?:[\s\S]*?\S)?)\1/g, function (m, delim, text) {
 		return (delim === '~~') ? '<del>'+text+'</del>' : '<b>'+text+'</b>';
 	}).replace(/(\n|^|\W)([_\*])(\S(?:[\s\S]*?\S)?)\2(\W|$|\n)/g, function (m, l, di, ital, r) {
 		return l+'<i>'+ital+'</i>'+r;
@@ -32,6 +37,12 @@ function lex(a) {
 		if (new_tab)
 			attrs += ' target="_blank"';
 		return '<a href="' + nmd.href(ref) + '"' + attrs + '>' + text + '</a>';
+	});
+}
+
+function unesc(a) {
+	return a.replace(/\x01([\x0f-\x1c])/g, function (m, c) {
+		return escapes.charAt(c.charCodeAt(0)-esc_ofs);
 	});
 }
 
@@ -83,7 +94,7 @@ var nmd = function (md) {
 		}
 		while (lists.length)
 			out += '</li></'+lists.shift()[0]+'>';
-		return out;
+		return unesc(out);
 	});
 };
 
