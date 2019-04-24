@@ -98,7 +98,7 @@ suite('compiling', function () {
 	]);
 	massive('links', nmd, [
 		'tertet [comment](http://comment.com) ![image](/i/icon.jpg) [link with title](/links.html "title of link") [link for new window](+/new_window.html) wrwerwe;wer',
-		'<p>tertet <a href="http://comment.com">comment</a> <img src="/i/icon.jpg" alt="image"/> <a href="/links.html" title="title of link">link with title</a> <a href="/new_window.html" target="_blank">link for new window</a> wrwerwe;wer</p>'
+		'<p>tertet <a href="http://comment.com">comment</a> <img src="/i/icon.jpg" alt="image"/> <a href="/links.html" title="title of link">link with title</a> <a href="/new_window.html" target="_blank" rel="noopener">link for new window</a> wrwerwe;wer</p>'
 	]);
 	massive('hr', nmd, [
 		'---\n-- - - - - -\n------------------------------------',
