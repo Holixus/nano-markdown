@@ -35,7 +35,7 @@ function lex(a) {
 		if (is_img)
 			return '<img src="' + nmd.href(ref) + '" alt="' + text + '"' + attrs + '/>';
 		if (new_tab)
-			attrs += ' target="_blank"';
+			attrs += ' target="_blank" rel="noopener"';
 		return '<a href="' + nmd.href(ref) + '"' + attrs + '>' + text + '</a>';
 	});
 }
