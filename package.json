@@ -29,7 +29,10 @@
   },
   "keywords": [
     "markdown",
-    "html"
+    "html",
+    "small",
+    "micro",
+    "nano"
   ],
   "author": "Vladimir Antonov",
   "license": "MIT",
