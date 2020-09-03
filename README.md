@@ -1,7 +1,6 @@
 [![Gitter][gitter-image]][gitter-url]
 [![Build status][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
-[![bitHound Overall Score][bithound-image]][bithound-url]
 [![NPM version][npm-image]][npm-url]
 [![Dependency Status][david-image]][david-url]
 [![License][license-image]][license-url]
