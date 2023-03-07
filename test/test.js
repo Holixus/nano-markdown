@@ -34,6 +34,10 @@ suite('compiling', function () {
 		'__bold__ blah ~~blah~~ *blah* __blah__ ~~*blah*~~ **_oooo_** blah *ital*',
 		'<p><b>bold</b> blah <del>blah</del> <i>blah</i> <b>blah</b> <del><i>blah</i></del> <b><i>oooo</i></b> blah <i>ital</i></p>'
 	]);
+	massive('one_bis', nmd, [
+		'__11__ 1 ~~1~~ *1* __1__ ~~*1*~~ **_1_** 1 *i*',
+		'<p><b>11</b> 1 <del>1</del> <i>1</i> <b>1</b> <del><i>1</i></del> <b><i>1</i></b> 1 <i>i</i></p>'
+	]);
 	massive('identifiers', nmd, [
 		'blah _blah_ bl_a_h',
 		'<p>blah <i>blah</i> bl_a_h</p>'

@@ -26,9 +26,9 @@ var escapes = '\\[!]#{()}*+-._',
 function lex(a) {
 	return a.replace(/\\([(){}[\]#*+\-.!_\\])/g, function (m, ch) {
 		return String.fromCharCode(1, escapes.indexOf(ch)+esc_ofs);
-	}).replace(/(\*\*|__|~~)(\S(?:[\s\S]*?\S)?)\1/g, function (m, delim, text) {
+	}).replace(/(\*\*|__|~~)(.*?)\1/g, function (m, delim, text) {
 		return (delim === '~~') ? '<del>'+text+'</del>' : '<b>'+text+'</b>';
-	}).replace(/(\n|^|\W)([_\*])(\S(?:[\s\S]*?\S)?)\2(\W|$|\n)/g, function (m, l, di, ital, r) {
+	}).replace(/(\n|^|\W)([_\*])(.*?)\2(\W|$|\n)/g, function (m, l, di, ital, r) {
 		return l+'<i>'+ital+'</i>'+r;
 	}).replace(/(!?)\[([^\]<>]+)\]\((\+?)([^ \)<>]+)(?: "([^\(\)\"]+)")?\)/g, function (match, is_img, text, new_tab, ref, title) {
 		var attrs = title ? ' title="' + title + '"' : '';
